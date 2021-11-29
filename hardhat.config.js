@@ -41,6 +41,10 @@ module.exports = {
       chainId: 3,
       accounts: [`0x${PRIVATE_KEY}`],
     },
+    kovan: {
+      url: process.env.KOVAN_URL,
+      accounts: [`0x${PRIVATE_KEY}`],
+    },
     coverage: {
       url: 'http://localhost:8555',
     },

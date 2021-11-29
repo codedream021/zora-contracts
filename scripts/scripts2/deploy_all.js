@@ -13,7 +13,7 @@ async function main(network) {
   
     ////////////
     const Artion = await ethers.getContractFactory('Artion');
-    const artion = await Artion.deploy(TREASURY_ADDRESS, '2000000000000000000');
+    const artion = await Artion.deploy(TREASURY_ADDRESS, '0');
   
     await artion.deployed();  
     console.log('FantomArtion deployed at', artion.address);
@@ -104,9 +104,9 @@ async function main(network) {
         AUCTION_PROXY_ADDRESS,
         MARKETPLACE_PROXY_ADDRESS,
         BUNDLE_MARKETPLACE_PROXY_ADDRESS,
-        '10000000000000000000',
+        '0',
         TREASURY_ADDRESS,
-        '50000000000000000000'
+        '0'
     );
     await factory.deployed();
     console.log('FantomNFTFactory deployed to:', factory.address);
@@ -118,9 +118,9 @@ async function main(network) {
         AUCTION_PROXY_ADDRESS,
         MARKETPLACE_PROXY_ADDRESS,
         BUNDLE_MARKETPLACE_PROXY_ADDRESS,
-        '10000000000000000000',
+        '0',
         TREASURY_ADDRESS,
-        '50000000000000000000'
+        '0'
     );
     await privateFactory.deployed();
     console.log('FantomNFTFactoryPrivate deployed to:', privateFactory.address);
@@ -134,7 +134,7 @@ async function main(network) {
         AUCTION_PROXY_ADDRESS,
         MARKETPLACE_PROXY_ADDRESS,
         BUNDLE_MARKETPLACE_PROXY_ADDRESS,
-        '10000000000000000000',
+        '0',
         TREASURY_ADDRESS
     );
     await nft.deployed();
@@ -149,7 +149,7 @@ async function main(network) {
         AUCTION_PROXY_ADDRESS,
         MARKETPLACE_PROXY_ADDRESS,
         BUNDLE_MARKETPLACE_PROXY_ADDRESS,
-        '10000000000000000000',
+        '0',
         TREASURY_ADDRESS
     );
     await nftPrivate.deployed();
@@ -177,7 +177,8 @@ async function main(network) {
 
     ////////
     const PriceFeed = await ethers.getContractFactory('FantomPriceFeed');
-    const WRAPPED_FTM = network.name === 'mainnet' ? WRAPPED_FTM_MAINNET : WRAPPED_FTM_TESTNET;
+    const WRAPPED_FTM = '0x0000000000000000000000000000000000000000';
+    // network.name === 'mainnet' ? WRAPPED_FTM_MAINNET : WRAPPED_FTM_TESTNET;
     const priceFeed = await PriceFeed.deploy(
       FANTOM_ADDRESS_REGISTRY,
       WRAPPED_FTM
@@ -193,7 +194,7 @@ async function main(network) {
     const artTradable = await ArtTradable.deploy(
         'FantomArt',
         'FART',
-        '20000000000000000000',
+        '0',
         TREASURY_ADDRESS,
         MARKETPLACE_PROXY_ADDRESS,
         BUNDLE_MARKETPLACE_PROXY_ADDRESS
@@ -207,7 +208,7 @@ async function main(network) {
     const artTradablePrivate = await ArtTradablePrivate.deploy(
         'FantomArt',
         'FART',
-        '20000000000000000000',
+        '0',
         TREASURY_ADDRESS,
         MARKETPLACE_PROXY_ADDRESS,
         BUNDLE_MARKETPLACE_PROXY_ADDRESS
@@ -221,9 +222,9 @@ async function main(network) {
     const artFactory = await ArtFactory.deploy(
         MARKETPLACE_PROXY_ADDRESS,
         BUNDLE_MARKETPLACE_PROXY_ADDRESS,
-        '20000000000000000000',
+        '0',
         TREASURY_ADDRESS,
-        '10000000000000000000'
+        '0'
      );
     await artFactory.deployed();
     console.log('FantomArtFactory deployed to:', artFactory.address);
@@ -234,9 +235,9 @@ async function main(network) {
     const artFactoryPrivate = await ArtFactoryPrivate.deploy(
         MARKETPLACE_PROXY_ADDRESS,
         BUNDLE_MARKETPLACE_PROXY_ADDRESS,
-        '20000000000000000000',
+        '0',
         TREASURY_ADDRESS,
-        '10000000000000000000'
+        '0'
     );
     await artFactoryPrivate.deployed();
     console.log('FantomArtFactoryPrivate deployed to:', artFactoryPrivate.address);

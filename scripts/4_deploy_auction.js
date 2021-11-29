@@ -5,10 +5,10 @@ const {
 } = require('./constants');
 
 async function main() {
-  const Auction = await ethers.getContractFactory('FantomAuction');
-  const auctionImpl = await Auction.deploy();
-  await auctionImpl.deployed();
-  console.log('FantomAuction deployed to:', auctionImpl.address);
+  // const Auction = await ethers.getContractFactory('FantomAuction');
+  // const auctionImpl = await Auction.deploy();
+  // await auctionImpl.deployed();
+  // console.log('FantomAuction deployed to:', auctionImpl.address);
 
   // const AdminUpgradeabilityProxyFactory = await ethers.getContractFactory(
   //   'AdminUpgradeabilityProxy'
@@ -37,6 +37,10 @@ async function main() {
   // );
   // await auction.initialize(TREASURY_ADDRESS);
   // console.log('Auction Proxy initialized');
+
+  const auction = await ethers.getContractAt('FantomAuction', '0x7523f5FBE540FAb456eB1712cfdA949894f0DEe4');
+  await auction.updateAddressRegistry('0xcc87F822D277B6e3BF7065483254E9FB8B9F192e');
+
 }
 
 // We recommend this pattern to be able to use async/await everywhere

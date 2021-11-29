@@ -1,14 +1,10 @@
-const {
-  FANTOM_ADDRESS_REGISTRY,
-  WRAPPED_FTM_MAINNET,
-  WRAPPED_FTM_TESTNET
-} = require('./constants');
-
 async function main() {
+  const WRAPPED_FTM = '0x2d3d8878229419F5A1486C772021D020e6FF7Ed7'
+  FANTOM_ADDRESS_REGISTRY = '0xcc87F822D277B6e3BF7065483254E9FB8B9F192e';
   const Contract = await ethers.getContractFactory('FantomPriceFeed');
   const contract = await Contract.deploy(
     FANTOM_ADDRESS_REGISTRY,
-    WRAPPED_FTM_MAINNET
+    WRAPPED_FTM
   );
 
   await contract.deployed();
